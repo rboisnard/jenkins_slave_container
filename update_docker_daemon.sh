@@ -10,7 +10,7 @@ if [ -z ${DOCKER_PORT} ]; then
 fi
 
 # make dockerd listen on port ${DOCKER_PORT} to allow remote connections
-sed -i -E "s|^ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock|ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:${DOCKER_PORT} -H unix:///var/run/docker.sock" /lib/systemd/system/docker.service
+sed -i -E "s|^ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock|ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:${DOCKER_PORT} -H unix:///var/run/docker.sock|" /lib/systemd/system/docker.service
 
 # restart the docker daemon
 systemctl daemon-reload
