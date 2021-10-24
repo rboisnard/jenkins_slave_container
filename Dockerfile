@@ -12,6 +12,7 @@ ARG java_version=openjdk11
 RUN  apk update     \
   && apk add        \
     bash            \
+    curl            \
     docker          \
     docker-compose  \
     git             \
@@ -20,6 +21,7 @@ RUN  apk update     \
     openssh         \
     openssh-server  \
     shadow          \
+    wget            \
   && mkdir -p /var/jenkins_home/.ssh            \
   && groupmod -g ${docker_group_id} docker      \
   && groupadd -g ${jenkins_group_id} jenkins    \
